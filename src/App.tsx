@@ -110,6 +110,10 @@ function App() {
 					<input type="checkbox" checked={continuous} className="toggle toggle-primary" onChange={() => setContinuous(!continuous)}/>
 				</div>
 				</div>
+				<div className="flex flex-row mt-10">
+					<h2 className={"text-md"}>ファンサイト(非公式)です。</h2>
+					<h2 className={"font-yusei text-md"}>ういビーム！</h2>
+				</div>
 			</div>
 		</>
 	);
