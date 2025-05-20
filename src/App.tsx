@@ -15,6 +15,9 @@ const beamSounds = ["/beams/1.mp3", "/beams/2.mp3", "/beams/3.mp3", "/beams/4.mp
 
 function App() {
 	const [count, setCount] = useState(0);
+	const [sound, setSound] = useState(true);
+	const [continuous, setContinuous] = useState(true);
+	const [playing, setPlaying] = useState(false);
 
 	useEffect(() => {
 		const handler = (event: MessageEvent) => {
@@ -33,15 +36,24 @@ function App() {
 
 	const uibeam = async () => {
 		socket.send("uibeam");
-		const randomSound = beamSounds[Math.floor(Math.random() * beamSounds.length)];
-		const audio = new Audio(randomSound);
-		audio.play();
+		if (sound) {
+			if (!continuous && playing) {
+				return;
+			}
+			setPlaying(true);
+			const randomSound = beamSounds[Math.floor(Math.random() * beamSounds.length)];
+			const audio = new Audio(randomSound);
+			audio.play();
+			audio.addEventListener("ended", () => {
+				setPlaying(false);
+			});
+		}
 	};
 
 	return (
 		<>
 			<div className="flex flex-col items-center justify-center min-h-screen">
-				<img src={uishig} alt="ういしぐ" className="rounded-full" width={75} height={75} />
+				<img src={uishig} alt="ういしぐ" className="rounded-full" width={75} height={75}/>
 				<div className="flex flex-row mt-5">
 					<h2 className={"text-2xl"}>ういビーム</h2>
 					<h2 className={"font-yusei text-2xl"}>を乱射できる画期的なサービス</h2>
@@ -57,7 +69,11 @@ function App() {
 					<h2 className={"text-2xl"}>みんなで飛ばした</h2>
 					<h2 className={"font-yusei text-2xl"}>ういビーム</h2>
 				</div>
-				<h1 className={"font-pacifico text-6xl"}>{count}</h1>
+				{count === 0 ? (
+					<p className={"font-pacifico text-6xl"}>...</p>
+				) : (
+					<h1 className={"font-pacifico text-6xl"}>{count}</h1>
+				)}
 				<div className={"flex flex-row gap-4"}>
 					<a
 						href={
@@ -67,7 +83,7 @@ function App() {
 						target={"_blank"}
 					>
 						<button className="btn btn-primary mt-10">
-							<FaXTwitter className="" />
+							<FaXTwitter className=""/>
 							で共有する
 						</button>
 					</a>
@@ -79,10 +95,20 @@ function App() {
 						target={"_blank"}
 					>
 						<button className="btn btn-primary mt-10">
-							<FaGithub className="" />
+							<FaGithub className=""/>
 							ソースコード
 						</button>
 					</a>
+				</div>
+				<div className={"flex flex-row gap-4 items-center justify-center mt-5"}>
+				<div className={"flex flex-row gap-2 items-center justify-center"}>
+					<p className={"text-md"} >音を鳴らす</p>
+				<input type="checkbox" checked={sound} className="toggle toggle-primary" onChange={() => setSound(!sound)}/>
+				</div>
+				<div className={"flex flex-row gap-2 items-center justify-center"}>
+					<p className={"text-md"} >連続で鳴らす</p>
+					<input type="checkbox" checked={continuous} className="toggle toggle-primary" onChange={() => setContinuous(!continuous)}/>
+				</div>
 				</div>
 			</div>
 		</>
