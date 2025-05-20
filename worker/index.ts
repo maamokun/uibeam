@@ -4,10 +4,11 @@ export class MyServer extends Server {
 	counter: number = 0;
 
 	async onConnect(connection: any) {
-		const count = await this.ctx.storage.get("counter");
-		connection.send(
-			JSON.stringify({ counter: typeof count === "string" ? JSON.parse(count) : 0 })
-		);
+		if (this.counter === 0) {
+			const stored = await this.ctx.storage.get("counter");
+			this.counter = typeof stored === "string" ? JSON.parse(stored) : 0;
+		}
+		connection.send(JSON.stringify({ counter: this.counter }));
 	}
 
 	onMessage(connection: any, message: any) {
