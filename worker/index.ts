@@ -3,13 +3,17 @@ import { routePartykitRequest, Server } from "partyserver";
 export class MyServer extends Server {
 	counter: number = 0;
 
-	onConnect(connection: any) {
-		connection.send(JSON.stringify({ counter: this.counter }));
+	async onConnect(connection: any) {
+		const count = await this.ctx.storage.get("counter");
+		connection.send(
+			JSON.stringify({ counter: typeof count === "string" ? JSON.parse(count) : 0 })
+		);
 	}
 
 	onMessage(connection: any, message: any) {
 		this.counter++;
 		this.broadcast(JSON.stringify({ counter: this.counter }));
+		this.ctx.storage.put("counter", JSON.stringify(this.counter));
 	}
 }
 
