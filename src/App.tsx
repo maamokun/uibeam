@@ -60,12 +60,12 @@ function App() {
 			<div className="flex flex-col items-center justify-center min-h-screen">
 				<img src={uishig} alt="ういしぐ" className="rounded-full" width={75} height={75} />
 				<div className="flex flex-row mt-5">
-					<h2 className={"text-2xl"}>ういビーム</h2>
-					<h2 className={"font-yusei text-2xl"}>を乱射できる画期的なサービス</h2>
+					<h2 className={"text-2xl font-yusei"}>ういビーム</h2>
+					<h2 className={"text-2xl"}>を乱射できる画期的なサービス</h2>
 				</div>
 				<div className="flex flex-row mt-2 mb-5">
-					<h2 className={"text-2xl"}>ういビーム</h2>
-					<h2 className={"font-yusei text-2xl"}>ボタン</h2>
+					<h2 className={"text-2xl font-yusei"}>ういビーム</h2>
+					<h2 className={"text-2xl"}>ボタン</h2>
 				</div>
 				<div className="flex flex-row mt-2 mb-5">
 					<h2 className={"text-md"}>現在の</h2>
