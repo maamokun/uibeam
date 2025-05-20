@@ -3,7 +3,7 @@ import uishig from "./assets/uishig.png";
 import { PartySocket } from "partysocket";
 import "./App.css";
 
-import { FaXTwitter, FaGithub } from "react-icons/fa6";
+import { FaXTwitter, FaGithub, FaChartLine } from "react-icons/fa6";
 
 const socket = new PartySocket({
 	//host:"http://localhost:5173",
@@ -101,6 +101,12 @@ function App() {
 						<button className="btn btn-primary mt-10">
 							<FaGithub className="" />
 							ソースコード
+						</button>
+					</a>
+					<a href={"https://analytics.mikandev.com/projects/Q8Kt5OMbfhHd"} rel={"nofollow noopener"} target={"_blank"}>
+						<button className="btn btn-primary mt-10">
+							<FaChartLine className="" />
+							アクセス解析
 						</button>
 					</a>
 				</div>
