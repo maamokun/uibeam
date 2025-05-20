@@ -9,11 +9,21 @@
 		"lint": "eslint .",
 		"preview": "bun run build && vite preview",
 		"deploy": "bun run build && wrangler deploy",
-		"cf-typegen": "wrangler types"
+		"cf-typegen": "wrangler types",
+		"format": "biome format --write ."
 	},
 	"dependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@fontsource/pacifico": "^5.2.5",
+		"@fontsource/yusei-magic": "^5.2.6",
+		"@tailwindcss/vite": "^4.1.7",
+		"daisyui": "^5.0.35",
+		"partyserver": "^0.0.71",
+		"partysocket": "^1.1.4",
 		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
+		"react-dom": "^19.1.0",
+		"react-icons": "^5.5.0",
+		"tailwindcss": "^4.1.7"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "^1.2.3",

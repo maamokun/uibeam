@@ -1,12 +1,22 @@
-export default {
-  fetch(request) {
-    const url = new URL(request.url);
+import { routePartykitRequest, Server } from "partyserver";
 
-    if (url.pathname.startsWith("/api/")) {
-      return Response.json({
-        name: "Cloudflare",
-      });
-    }
-		return new Response(null, { status: 404 });
-  },
-} satisfies ExportedHandler<Env>;
+export class MyServer extends Server {
+	counter: number = 0;
+
+	onConnect(connection: any) {
+		connection.send(JSON.stringify({ counter: this.counter }));
+	}
+
+	onMessage(connection: any, message: any) {
+		this.counter++;
+		this.broadcast(JSON.stringify({ counter: this.counter }));
+	}
+}
+
+export const uibeam_server = MyServer;
+
+export default {
+	fetch(request: Request, env: any) {
+		return routePartykitRequest(request, env) || new Response("Not Found", { status: 404 });
+	},
+};

@@ -1,58 +1,92 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import cloudflareLogo from './assets/Cloudflare_Logo.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import uishig from "./assets/uishig.png";
+import { PartySocket } from "partysocket";
+import "./App.css";
+
+import { FaXTwitter, FaGithub } from "react-icons/fa6";
+
+const socket = new PartySocket({
+	host: "https://uibeam.maamokun.workers.dev",
+	party: "uibeam-server",
+	room: "beams",
+});
+
+const beamSounds = ["/beams/1.mp3", "/beams/2.mp3", "/beams/3.mp3", "/beams/4.mp3"];
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [name, setName] = useState('unknown')
+	const [count, setCount] = useState(0);
 
-  return (
-    <>
-      <div>
-        <a href='https://vite.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-        <a href='https://workers.cloudflare.com/' target='_blank'>
-          <img src={cloudflareLogo} className='logo cloudflare' alt='Cloudflare logo' />
-        </a>
-      </div>
-      <h1>Vite + React + Cloudflare</h1>
-      <div className='card'>
-        <button
-          onClick={() => setCount((count) => count + 1)}
-          aria-label='increment'
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <div className='card'>
-        <button
-          onClick={() => {
-            fetch('/api/')
-              .then((res) => res.json() as Promise<{ name: string }>)
-              .then((data) => setName(data.name))
-          }}
-          aria-label='get name'
-        >
-          Name from API is: {name}
-        </button>
-        <p>
-          Edit <code>worker/index.ts</code> to change the name
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	useEffect(() => {
+		const handler = (event: MessageEvent) => {
+			try {
+				const data = JSON.parse(event.data);
+				if (typeof data.counter === "number") {
+					setCount(data.counter);
+				}
+			} catch {
+				console.log("Invalid message format");
+			}
+		};
+		socket.addEventListener("message", handler);
+		return () => socket.removeEventListener("message", handler);
+	}, []);
+
+	const uibeam = async () => {
+		socket.send("uibeam");
+		const randomSound = beamSounds[Math.floor(Math.random() * beamSounds.length)];
+		const audio = new Audio(randomSound);
+		audio.play();
+	};
+
+	return (
+		<>
+			<div className="flex flex-col items-center justify-center min-h-screen">
+				<img src={uishig} alt="ういしぐ" className="rounded-full" width={75} height={75} />
+				<div className="flex flex-row mt-5">
+					<h2 className={"text-2xl"}>ういビーム</h2>
+					<h2 className={"font-yusei text-2xl"}>を乱射できる画期的なサービス</h2>
+				</div>
+				<div className="flex flex-row mt-2 mb-5">
+					<h2 className={"text-2xl"}>ういビーム</h2>
+					<h2 className={"font-yusei text-2xl"}>ボタン</h2>
+				</div>
+				<button onClick={uibeam} className="btn btn-info w-1/2 h-full py-5">
+					<p className={"font-yusei text-6xl"}>ういビーム</p>
+				</button>
+				<div className="flex flex-row mt-5">
+					<h2 className={"text-2xl"}>みんなで飛ばした</h2>
+					<h2 className={"font-yusei text-2xl"}>ういビーム</h2>
+				</div>
+				<h1 className={"font-pacifico text-6xl"}>{count}</h1>
+				<div className={"flex flex-row gap-4"}>
+					<a
+						href={
+							"https://x.com/intent/tweet?text=ういビームを乱射できる画期的なサービス！%0Aみんなも押してみてね！ういビーム！%0Ahttps%3A%2F%2Fuibi-mu.click%2F%0A%23ういビーム%0A%23しぐれうい%0A%23ういビームボタン"
+						}
+						rel={"nofollow noopener"}
+						target={"_blank"}
+					>
+						<button className="btn btn-primary mt-10">
+							<FaXTwitter className="" />
+							で共有する
+						</button>
+					</a>
+					<a
+						href={
+							"https://github.com/maamokun/uibeam"
+						}
+						rel={"nofollow noopener"}
+						target={"_blank"}
+					>
+						<button className="btn btn-primary mt-10">
+							<FaGithub className="" />
+							ソースコード
+						</button>
+					</a>
+				</div>
+			</div>
+		</>
+	);
 }
 
-export default App
+export default App;
