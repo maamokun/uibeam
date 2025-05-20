@@ -1,16 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import uishig from "./assets/uishig.png";
 import { PartySocket } from "partysocket";
+import { NavLink } from "react-router";
 import "./App.css";
 
 import { FaXTwitter, FaGithub, FaChartLine } from "react-icons/fa6";
-
-const socket = new PartySocket({
-	//host:"http://localhost:5173",
-	host: "https://uibeam.maamokun.workers.dev",
-	party: "uibeam-server",
-	room: "beams",
-});
 
 const beamSounds = ["/beams/1.mp3", "/beams/2.mp3", "/beams/3.mp3", "/beams/4.mp3"];
 
@@ -20,27 +14,35 @@ function App() {
 	const [sound, setSound] = useState(true);
 	const [continuous, setContinuous] = useState(true);
 	const [playing, setPlaying] = useState(false);
+	const socketRef = useRef<PartySocket | null>(null);
 
 	useEffect(() => {
+		const socket = new PartySocket({
+			host: "https://uibeam.maamokun.workers.dev",
+			party: "uibeam-server",
+			room: "beams",
+		});
+		socketRef.current = socket;
+
 		const handler = (event: MessageEvent) => {
 			try {
 				const data = JSON.parse(event.data);
-				if (typeof data.counter === "number") {
-					setCount(data.counter);
-				}
-				if (typeof data.users === "number") {
-					setUsers(data.users);
-				}
+				if (typeof data.counter === "number") setCount(data.counter);
+				if (typeof data.users === "number") setUsers(data.users);
 			} catch {
 				console.log("Invalid message format");
 			}
 		};
 		socket.addEventListener("message", handler);
-		return () => socket.removeEventListener("message", handler);
+
+		return () => {
+			socket.removeEventListener("message", handler);
+			socket.close();
+		};
 	}, []);
 
 	const uibeam = async () => {
-		socket.send("uibeam");
+		socketRef.current?.send("uibeam");
 		if (sound) {
 			if (!continuous && playing) {
 				return;
@@ -134,6 +136,11 @@ function App() {
 					<h2 className={"text-md"}>ファンサイト(非公式)です。</h2>
 					<h2 className={"font-yusei text-md"}>ういビーム！</h2>
 				</div>
+				<NavLink to={"/about"}>
+					<button className="btn btn-link mt-5">
+						<p className={"text-md"}>あそびかた・詳細情報</p>
+					</button>
+				</NavLink>
 			</div>
 		</>
 	);
