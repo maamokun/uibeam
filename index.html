@@ -16,6 +16,21 @@
     <title>ういビームボタン</title>
   </head>
   <body>
+    <script src="https://cdn.mikn.dev/analytics/script" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        swetrix.init('Q8Kt5OMbfhHd', { apiURL: 'https://analytics.mikandev.tech/log' })
+        swetrix.trackViews()
+      })
+    </script>
+
+    <noscript>
+      <img
+              src="https://analytics.mikandev.tech/log/noscript?pid=Q8Kt5OMbfhHd"
+              alt=""
+              referrerpolicy="no-referrer-when-downgrade"
+      />
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
