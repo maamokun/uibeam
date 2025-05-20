@@ -6,8 +6,8 @@ import "./App.css";
 import { FaXTwitter, FaGithub } from "react-icons/fa6";
 
 const socket = new PartySocket({
-	host:"http://localhost:5173",
-	//host: "https://uibeam.maamokun.workers.dev",
+	//host:"http://localhost:5173",
+	host: "https://uibeam.maamokun.workers.dev",
 	party: "uibeam-server",
 	room: "beams",
 });
