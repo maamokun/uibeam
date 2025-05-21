@@ -47,6 +47,25 @@ function App() {
 						しぐれうい選手によるマシュマロ高速百本ノック (2021/08/26)
 					</button>
 				</a>
+				<p className={"text-lg text-center mt-5"}>
+					Cloudflare WorkersのDurable Objectsを活用したリアルタイムアプリです。
+				</p>
+				<div className="flex flex-row">
+					<p className={"text-lg text-center"}>あなただけの</p>
+					<h2 className={"text-lg font-yusei"}>ういビーム</h2>
+					<h2 className={"text-lg"}>ボタン</h2>
+					<p className={"text-lg text-center"}>を構築しませんか？</p>
+				</div>
+				<a
+					target="_blank"
+					href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fmaamokun%2Fuibeam"
+				>
+					<img
+						src="https://deploy.workers.cloudflare.com/button"
+						alt="Deploy to Cloudflare"
+						className={"mt-2"}
+					/>
+				</a>
 			</div>
 		</>
 	);

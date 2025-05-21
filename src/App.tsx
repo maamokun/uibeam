@@ -70,7 +70,7 @@ function App() {
 					<h2 className={"text-2xl"}>ボタン</h2>
 				</div>
 				<div className="flex flex-row mt-2 mb-5">
-					<h2 className={"text-md"}>現在の</h2>
+					<h2 className={"text-md"}>接続中の</h2>
 					<h2 className={"font-yusei text-md"}>ういビーマー：</h2>
 					<h2 className={"text-md"}>{users}人</h2>
 				</div>
@@ -116,7 +116,7 @@ function App() {
 						</button>
 					</a>
 				</div>
-				<div className={"flex flex-row gap-4 items-center justify-center mt-5"}>
+				<div className={"flex flex-col md:flex-row gap-4 items-center justify-center mt-5"}>
 					<div className={"flex flex-row gap-2 items-center justify-center"}>
 						<p className={"text-md"}>音を鳴らす</p>
 						<input
