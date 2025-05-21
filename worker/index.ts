@@ -30,7 +30,7 @@ export class MyServer extends Server {
 	}
 }
 
-export const uibeam_server = MyServer;
+export const uibeam_server_sql = MyServer;
 
 export default {
 	fetch(request: Request, env: any) {
