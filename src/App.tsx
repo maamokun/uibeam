@@ -59,7 +59,7 @@ function App() {
 
 	return (
 		<>
-			<div className="flex flex-col items-center justify-center min-h-screen mx-auto w-11/12 md:w-full">
+			<div className="flex flex-col items-center justify-center min-h-screen mx-auto w-11/12 md:w-full py-10">
 				<img src={uishig} alt="ういしぐ" className="rounded-full" width={75} height={75} />
 				<div className="flex flex-col md:flex-row mt-5 items-center">
 					<h2 className={"text-2xl font-yusei"}>ういビーム</h2>

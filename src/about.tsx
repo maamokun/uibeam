@@ -1,5 +1,3 @@
-import uishig from "./assets/uishig.png";
-import { PartySocket } from "partysocket";
 import { NavLink } from "react-router";
 import "./App.css";
 
@@ -7,7 +5,7 @@ function App() {
 
     return (
         <>
-            <div className="flex flex-col items-center justify-center min-h-screen w-11/12 md:w-full mx-auto">
+            <div className="flex flex-col items-center justify-center min-h-screen w-11/12 md:w-full mx-auto py-10">
                 <h1 className={"text-4xl font-bold text-center mb-4"}>
                     ういビームボタンのあそび方！
                 </h1>
