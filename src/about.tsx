@@ -51,10 +51,11 @@ function App() {
 					Cloudflare WorkersのDurable Objectsを活用したリアルタイムアプリです。
 				</p>
 				<div className="flex flex-row">
-					<p className={"text-lg text-center"}>あなただけの</p>
-					<h2 className={"text-lg font-yusei"}>ういビーム</h2>
-					<h2 className={"text-lg"}>ボタン</h2>
-					<p className={"text-lg text-center"}>を構築しませんか？</p>
+					<p className="text-lg text-center">
+						あなただけの
+						<span className="font-yusei">ういビーム</span>
+						ボタンを構築しませんか？
+					</p>
 				</div>
 				<a
 					target="_blank"
