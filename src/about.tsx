@@ -7,7 +7,7 @@ function App() {
 
     return (
         <>
-            <div className="flex flex-col items-center justify-center min-h-screen">
+            <div className="flex flex-col items-center justify-center min-h-screen w-11/12 md:w-full mx-auto">
                 <h1 className={"text-4xl font-bold text-center mb-4"}>
                     ういビームボタンのあそび方！
                 </h1>
@@ -20,7 +20,7 @@ function App() {
                 <p className={"text-lg text-center"}>
                     それと同時に、みんなのカウントが一つ増えます！
                 </p>
-                <div className={"flex flex-row items-center justify-center"}>
+                <div className={"flex flex-col md:flex-row items-center justify-center"}>
                 <p className={"text-lg text-center"}>
                     ただそれだけのサイトです。ういビームの音源を発見したら
                 </p>

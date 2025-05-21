@@ -59,9 +59,9 @@ function App() {
 
 	return (
 		<>
-			<div className="flex flex-col items-center justify-center min-h-screen">
+			<div className="flex flex-col items-center justify-center min-h-screen mx-auto w-11/12 md:w-full">
 				<img src={uishig} alt="ういしぐ" className="rounded-full" width={75} height={75} />
-				<div className="flex flex-row mt-5">
+				<div className="flex flex-col md:flex-row mt-5 items-center">
 					<h2 className={"text-2xl font-yusei"}>ういビーム</h2>
 					<h2 className={"text-2xl"}>を乱射できる画期的なサービス</h2>
 				</div>
@@ -74,8 +74,8 @@ function App() {
 					<h2 className={"font-yusei text-md"}>ういビーマー：</h2>
 					<h2 className={"text-md"}>{users}人</h2>
 				</div>
-				<button onClick={uibeam} className="btn btn-info w-1/2 h-full py-5">
-					<p className={"font-yusei text-6xl"}>ういビーム</p>
+				<button onClick={uibeam} className="btn btn-info w-11/12 md:w-1/2 h-full py-5">
+					<p className={"font-yusei text-3xl mdtext-6xl"}>ういビーム</p>
 				</button>
 				<div className="flex flex-row mt-5">
 					<h2 className={"text-2xl"}>みんなで飛ばした</h2>
@@ -86,7 +86,7 @@ function App() {
 				) : (
 					<h1 className={"font-pacifico text-6xl"}>{count}</h1>
 				)}
-				<div className={"flex flex-row gap-4"}>
+				<div className={"flex flex-col md:flex-row gap-4 justify-center items-center mt-10"}>
 					<a
 						href={
 							"https://x.com/intent/tweet?text=ういビームを乱射できる画期的なサービス！%0Aみんなも押してみてね！ういビーム！%0Ahttps%3A%2F%2Fuibi-mu.click%2F%0A%23ういビーム%0A%23しぐれうい%0A%23ういビームボタン"
@@ -94,19 +94,19 @@ function App() {
 						rel={"nofollow noopener"}
 						target={"_blank"}
 					>
-						<button className="btn btn-primary mt-10">
+						<button className="btn btn-primary">
 							<FaXTwitter className="" />
 							で共有する
 						</button>
 					</a>
 					<a href={"https://github.com/maamokun/uibeam"} rel={"nofollow noopener"} target={"_blank"}>
-						<button className="btn btn-primary mt-10">
+						<button className="btn btn-primary">
 							<FaGithub className="" />
 							ソースコード
 						</button>
 					</a>
 					<a href={"https://analytics.mikandev.com/projects/Q8Kt5OMbfhHd"} rel={"nofollow noopener"} target={"_blank"}>
-						<button className="btn btn-primary mt-10">
+						<button className="btn btn-primary">
 							<FaChartLine className="" />
 							アクセス解析
 						</button>
