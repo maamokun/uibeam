@@ -17,7 +17,7 @@
 		"bindings": [
 			{
 				"name": "uibeam-server",
-				"class_name": "uibeam_server"
+				"class_name": "uibeam_server_sql"
 			}
 		]
 	},
@@ -28,7 +28,7 @@
 		},
 		{
 			"tag": "v2",
-			"new_sqlite_classes": ["uibeam_server"]
+			"new_sqlite_classes": ["uibeam_server_sql"]
 		}
 	]
 }
