@@ -17,18 +17,14 @@
 		"bindings": [
 			{
 				"name": "uibeam-server",
-				"class_name": "uibeam_server_sql"
+				"class_name": "uibeam_server"
 			}
 		]
 	},
 	"migrations": [
 		{
 			"tag": "v1",
-			"new_classes": ["uibeam_server"]
-		},
-		{
-			"tag": "v2",
-			"new_sqlite_classes": ["uibeam_server_sql"]
+			"new_sqlite_classes": ["uibeam_server"]
 		}
 	]
 }
