@@ -4,9 +4,9 @@ export class MyServer extends Server {
 	counter: number = 0;
 	connections: Set<any> = new Set();
 
- static Options = {
-     hibernate: true
- };
+	static Options = {
+		hibernate: true,
+	};
 
 	async onConnect(connection: any) {
 		this.connections.add(connection);

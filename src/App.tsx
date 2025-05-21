@@ -105,7 +105,11 @@ function App() {
 							ソースコード
 						</button>
 					</a>
-					<a href={"https://analytics.mikandev.com/projects/Q8Kt5OMbfhHd"} rel={"nofollow noopener"} target={"_blank"}>
+					<a
+						href={"https://analytics.mikandev.com/projects/Q8Kt5OMbfhHd"}
+						rel={"nofollow noopener"}
+						target={"_blank"}
+					>
 						<button className="btn btn-primary">
 							<FaChartLine className="" />
 							アクセス解析
