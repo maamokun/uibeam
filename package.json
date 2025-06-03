@@ -18,7 +18,7 @@
 		"@fontsource/yusei-magic": "^5.2.6",
 		"@tailwindcss/vite": "^4.1.7",
 		"daisyui": "^5.0.35",
-		"partyserver": "^0.0.71",
+		"partyserver": "^0.0.72",
 		"partysocket": "^1.1.4",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
