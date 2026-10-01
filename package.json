@@ -13,7 +13,7 @@
 		"format": "biome format --write ."
 	},
 	"dependencies": {
-		"@biomejs/biome": "^1.9.4",
+		"@biomejs/biome": "^2.0.0",
 		"@fontsource/pacifico": "^5.2.5",
 		"@fontsource/yusei-magic": "^5.2.6",
 		"@tailwindcss/vite": "^4.1.7",
